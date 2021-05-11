@@ -23,11 +23,30 @@ const App = () => {
 		return str;
 	};
 
-	if (!countriesData) {
-		return <div>{'data: ' + countriesData}</div>;
-	} else {
-		return <div>{'data: ' + getCountriesNames()}</div>;
-	}
+	const content = () => {
+		if (!countriesData) {
+			return <div>Loading...</div>;
+		} else {
+			return (
+				<div class="list-group">
+					{countriesData.map((country) => {
+						return (
+							<a href="#" class="list-group-item list-group-item-action">
+								{country.name}
+							</a>
+						);
+					})}
+				</div>
+			);
+		}
+	};
+
+	return (
+		<div>
+			<h1>Coronavirus App</h1>
+			<div>{content()}</div>
+		</div>
+	);
 };
 
 export default App;
