@@ -7,36 +7,26 @@ const URL = 'https://covid.ourworldindata.org/data/owid-covid-data.json';
 
 const App = () => {
 	const database = databaseSingleton.getInstance(URL);
-	const [data, setData] = useState(null);
+	const [countriesData, setCountriesData] = useState(null);
 
 	useEffect(() => {
-		if (!data) {
-			fetchData();
+		if (!countriesData) {
+			database.fetchData().then((data) => {
+				setCountriesData(data);
+			});
 		}
 	});
 
-	const getCountriesNames = (data) => {
-		const keys = Object.keys(data);
-		let countries = [];
-		let countriesStr = '';
-		for (let i in keys) {
-			countries.push(data[keys[i]].location);
-			countriesStr += data[keys[i]].location + '  ';
-		}
-		//return countries;
-		return countriesStr;
+	const getCountriesNames = () => {
+		let str = '';
+		countriesData.forEach((country) => (str += country.name + ' '));
+		return str;
 	};
 
-	const fetchData = () => {
-		database.fetchData().then((data) => {
-			setData(data);
-		});
-	};
-
-	if (!data) {
-		return <div>{'data: ' + data}</div>;
+	if (!countriesData) {
+		return <div>{'data: ' + countriesData}</div>;
 	} else {
-		return <div>{'data: ' + getCountriesNames(data)}</div>;
+		return <div>{'data: ' + getCountriesNames()}</div>;
 	}
 };
 

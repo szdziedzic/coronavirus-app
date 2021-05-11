@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Country from './Country';
 
 class Database {
 	constructor() {
@@ -13,11 +14,19 @@ class Database {
 	async fetchData() {
 		const response = await axios.get(this.connectionURL);
 		this.data = response.data;
-		return this.readData();
+		return this.getCountriesArray();
 	}
 
-	async readData() {
-		return this.data;
+	getCountriesArray() {
+		const keys = Object.keys(this.data);
+		let countries = [];
+		for (let i in keys) {
+			let country = new Country();
+			country.setName(this.data[keys[i]].location);
+			country.setRawData(this.data[keys[i]]);
+			countries.push(country);
+		}
+		return countries;
 	}
 }
 
