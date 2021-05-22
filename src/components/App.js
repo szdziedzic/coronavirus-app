@@ -1,13 +1,16 @@
-import DatabaseSingleton from '../classes/Database';
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import CountryDetails from './CountryDetails';
+import Home from './Home';
+import DatabaseSingleton from '../classes/Database';
 
 const databaseSingleton = new DatabaseSingleton();
 
 const URL = 'https://covid.ourworldindata.org/data/owid-covid-data.json';
 
 const App = () => {
-	const database = databaseSingleton.getInstance(URL);
 	const [countriesData, setCountriesData] = useState(null);
+	const database = databaseSingleton.getInstance(URL);
 
 	useEffect(() => {
 		if (!countriesData) {
@@ -17,35 +20,38 @@ const App = () => {
 		}
 	});
 
-	const getCountriesNames = () => {
-		let str = '';
-		countriesData.forEach((country) => (str += country.name + ' '));
-		return str;
-	};
-
-	const content = () => {
+	const getCountryByName = (name) => {
 		if (!countriesData) {
-			return <div>Loading...</div>;
-		} else {
-			return (
-				<div class="list-group">
-					{countriesData.map((country) => {
-						return (
-							<a href="#" class="list-group-item list-group-item-action">
-								{country.name}
-							</a>
-						);
-					})}
-				</div>
-			);
+			return null;
 		}
+
+		const country = countriesData.find(
+			(currCountry) => currCountry.name === name
+		);
+
+		if (!country) {
+			return false;
+		}
+
+		return country;
 	};
 
 	return (
-		<div>
-			<h1>Coronavirus App</h1>
-			<div>{content()}</div>
-		</div>
+		<Router>
+			<Switch>
+				<Route
+					exact
+					path="/"
+					component={() => <Home countriesData={countriesData} />}
+				/>
+				<Route exact path="/countries/:name">
+					<CountryDetails getCountryByName={getCountryByName} />
+				</Route>
+				<Route>
+					<h1>404</h1>
+				</Route>
+			</Switch>
+		</Router>
 	);
 };
 
