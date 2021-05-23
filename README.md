@@ -4,7 +4,7 @@ App which enables users to browse, filter and display data and stats about coron
 
 #### Authors
 
-Szymon Dziedzic
+Szymon Dziedzic,
 Artur Górak
 
 #### Requirements
@@ -22,4 +22,4 @@ TODO
 3. Run `npm install`.
 4. Wait.
 5. Run `npm start`.
-6. Script should automatically open new tab with running app, if that is not the case try to go to localhost:3000.
+6. Script should automatically open new tab with running app, if that is not the case try to go to `localhost:3000`.
