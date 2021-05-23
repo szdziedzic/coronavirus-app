@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import MaterialTable from 'material-table';
 import DatePicker from 'react-date-picker';
+import Plotly from 'plotly.js-basic-dist';
+import createPlotlyComponent from 'react-plotly.js/factory';
+
+const Plot = createPlotlyComponent(Plotly);
 
 const CountryDataDisplay = ({ country }) => {
 	const [startDate, setStartDate] = useState(new Date(2019, 12, 1));
@@ -35,6 +39,21 @@ const CountryDataDisplay = ({ country }) => {
 					columns={columns}
 					data={country.getDataInGivenTimePeriod(startDate, endDate)}
 					title={country.name + "'s coronavirus stats"}
+				/>
+			</div>
+			<div style={{ textAlign: 'center' }}>
+				<Plot
+					data={[
+						{
+							x: [1, 2, 3],
+							y: [2, 6, 3],
+							type: 'scatter',
+							mode: 'lines+markers',
+							marker: { color: 'red' },
+						},
+						{ type: 'bar', x: [1, 2, 3], y: [2, 5, 3] },
+					]}
+					layout={{ width: '100%', title: 'A Fancy Plot' }}
 				/>
 			</div>
 		</div>
