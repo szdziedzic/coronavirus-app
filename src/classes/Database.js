@@ -1,10 +1,11 @@
 import axios from 'axios';
-import Country from './Country';
+import CountryFactory from './Country';
 
 class Database {
 	constructor() {
 		this.connectionURL = null;
 		this.data = null;
+		this.countryFactory = new CountryFactory();
 	}
 
 	setURL(url) {
@@ -21,7 +22,7 @@ class Database {
 		const keys = Object.keys(this.data);
 		let countries = [];
 		for (let i in keys) {
-			let country = new Country();
+			let country = this.countryFactory.getInstance();
 			country.setName(this.data[keys[i]].location);
 			country.setRawData(this.data[keys[i]]);
 			countries.push(country);
@@ -30,7 +31,8 @@ class Database {
 	}
 }
 
-class DatabaseSingleton { //Singleton pattern
+class DatabaseSingleton {
+	//Singleton pattern
 	static instatnce = null;
 
 	getInstance(url) {

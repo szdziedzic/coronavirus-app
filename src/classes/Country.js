@@ -21,7 +21,12 @@ class Country {
 		this.formatData();
 	}
 
+	formatData() {}
 
+	getDataInGivenTimePeriod(startDate, endDate) {}
+}
+
+class CountryImplementation extends Country {
 	formatData() {
 		this.continent = this.rawData.continent;
 		this.population = Math.floor(this.rawData.population);
@@ -63,4 +68,10 @@ class Country {
 	}
 }
 
-export default Country;
+class CountryFactory {
+	getInstance() {
+		return new CountryImplementation();
+	}
+}
+
+export default CountryFactory;
