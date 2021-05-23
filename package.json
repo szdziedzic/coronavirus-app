@@ -37,6 +37,9 @@
     ]
   },
   "devDependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "material-table": "^1.69.3",
     "react-router-dom": "^5.2.0"
   }
 }

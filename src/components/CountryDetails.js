@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import CountryDataDisplay from './CountryDataDisplay';
 
 const CountryDetails = ({ getCountryByName }) => {
 	const { name } = useParams();
@@ -15,9 +16,9 @@ const CountryDetails = ({ getCountryByName }) => {
 		if (country === null) {
 			return <div>Loading...</div>;
 		} else if (country === false) {
-			return <div>Error</div>;
+			return <h1>404</h1>;
 		} else {
-			return <h1>{country.name}</h1>;
+			return <CountryDataDisplay country={country} />;
 		}
 	};
 
