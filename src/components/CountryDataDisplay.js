@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MaterialTable from 'material-table';
+import DatePicker from 'react-date-picker';
 
 const CountryDataDisplay = ({ country }) => {
+	const [startDate, setStartDate] = useState(new Date(2019, 12, 1));
+	const [endDate, setEndDate] = useState(new Date());
+
 	const columns = [
 		{ title: 'Date', field: 'dateString' },
 		{ title: 'Total Cases', field: 'totalCases' },
@@ -15,11 +19,21 @@ const CountryDataDisplay = ({ country }) => {
 			<h6 style={{ padding: 5 }}>
 				{'Population: ' + Math.floor(country.population)}
 			</h6>
-			{console.log(country.data)}
+			<div style={{ padding: 5 }}>
+				<h6>Start date: </h6>
+				<DatePicker
+					value={startDate}
+					onChange={(value) => setStartDate(value)}
+				/>
+			</div>
+			<div style={{ padding: 5 }}>
+				<h6>End date: </h6>
+				<DatePicker value={endDate} onChange={(value) => setEndDate(value)} />
+			</div>
 			<div style={{ padding: 20 }}>
 				<MaterialTable
 					columns={columns}
-					data={country.data}
+					data={country.getDataInGivenTimePeriod(startDate, endDate)}
 					title={country.name + "'s coronavirus stats"}
 				/>
 			</div>

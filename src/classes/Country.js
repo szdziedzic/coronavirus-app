@@ -40,6 +40,16 @@ class Country {
 			}
 		);
 	}
+
+	getDataInGivenTimePeriod(startDate, endDate) {
+		return this.data.filter((item) => {
+			if (item.date >= startDate && item.date <= endDate) {
+				return true;
+			} else {
+				return false;
+			}
+		});
+	}
 }
 
 export default Country;
