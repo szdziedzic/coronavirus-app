@@ -48,12 +48,37 @@ const CountryDataDisplay = ({ country, plot }) => {
 			</div>
 		);
 	};
+	const renderContinent = () => {
+		if (!['Asia', 'Europe', 'Africa', 'Oceania', 'South America', 'North America'].includes(country.name) ) {
+			return (<div><h6 style={{ padding: 5 }}>{'Continent: ' + country.continent}</h6>
+			<h6 style={{ padding: 5 }}>
+				{'Population density: ' + Math.floor(country.population_density) + '/km^2'}
+			</h6>
+			<h6 style={{ padding: 5 }}>
+				{'Median age: ' + Math.floor(country.median_age)}
+			</h6>
+			<h6 style={{ padding: 5 }}>
+				{'Life expectancy: ' + Math.floor(country.life_expectancy)}
+			</h6>
+			<h6 style={{ padding: 5 }}>
+				{'GDP per capita: $' + Math.floor(country.gdp_per_capita)}
+			</h6>
+			<h6 style={{ padding: 5 }}>
+				{'HDI: ' + country.human_development_index}
+			</h6></div>)
+			
+		}
+	}
 
 	return (
 		<div>
 			<h1 style={{ textAlign: 'center', padding: 20 }}>{country.name}</h1>
-			<h6 style={{ padding: 20 }}>{'Continent: ' + country.continent}</h6>
-			<h6 style={{ padding: 20 }}>{'Population: ' + country.population}</h6>
+			<h6 style={{ padding: 5 }}>
+				{'Population: ' + Math.floor(country.population)}
+			</h6>
+			{renderContinent()}
+			
+			
 			<div style={{ padding: 20 }}>
 				<h6>Start date: </h6>
 				<DatePicker

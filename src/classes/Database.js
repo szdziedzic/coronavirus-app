@@ -30,7 +30,7 @@ class Database {
 	}
 }
 
-class DatabaseSingleton {
+class DatabaseSingleton { //Singleton pattern
 	static instatnce = null;
 
 	getInstance(url) {
