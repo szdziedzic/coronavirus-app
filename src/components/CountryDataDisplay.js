@@ -20,6 +20,7 @@ const CountryDataDisplay = ({ country, plot }) => {
 		if (!plot) {
 			return;
 		}
+		plot.formatData(startDate, endDate);
 		return (
 			<div>
 				<Plot
@@ -57,7 +58,9 @@ const CountryDataDisplay = ({ country, plot }) => {
 				<h6>Start date: </h6>
 				<DatePicker
 					value={startDate}
-					onChange={(value) => setStartDate(value)}
+					onChange={(value) => {
+						setStartDate(value);
+					}}
 				/>
 			</div>
 			<div style={{ padding: 20 }}>

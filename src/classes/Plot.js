@@ -18,15 +18,40 @@ class Plot {
 
 	setRawData(countryData) {
 		this.rawData = countryData;
-		this.formatData();
+		this.formatData(false, false);
 	}
 
-	formatData() {
+	formatData(startDate, endDate) {
+		this.totalCasesData.x = [];
+		this.newCasesData.x = [];
+		this.newCasesData.y = [];
+		this.totalCasesData.y = [];
+		if (!startDate || !endDate) {
+			this.rawData.forEach(({ dateString, newCases, totalCases }) => {
+				this.totalCasesData.x.push(dateString);
+				this.newCasesData.x.push(dateString);
+				this.newCasesData.y.push(newCases);
+				this.totalCasesData.y.push(totalCases);
+			});
+		}
 		this.rawData.forEach(({ dateString, newCases, totalCases }) => {
-			this.totalCasesData.x.push(dateString);
-			this.newCasesData.x.push(dateString);
-			this.newCasesData.y.push(newCases);
-			this.totalCasesData.y.push(totalCases);
+			const date = new Date(dateString);
+			if (date >= startDate && date <= endDate) {
+				this.totalCasesData.x.push(dateString);
+				this.newCasesData.x.push(dateString);
+				this.newCasesData.y.push(newCases);
+				this.totalCasesData.y.push(totalCases);
+			}
+		});
+	}
+
+	getDataInGivenTimePeriod(startDate, endDate) {
+		return this.data.filter((item) => {
+			if (item.date >= startDate && item.date <= endDate) {
+				return true;
+			} else {
+				return false;
+			}
 		});
 	}
 }
