@@ -7,13 +7,11 @@ App which enables users to browse, filter and display data and stats about coron
 Szymon Dziedzic,
 Artur Górak
 
-#### Requirements
-
-TODO
+#### Additional Requirements
+You need to install node.js first: https://nodejs.org/en/
 
 #### Resources
-
-TODO
+Dataset that we are using in the app: https://github.com/owid/covid-19-data/tree/master/public/data
 
 #### How to run the app?
 
