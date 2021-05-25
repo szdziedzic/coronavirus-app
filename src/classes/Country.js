@@ -1,4 +1,4 @@
-class Country {
+class Country { //Abstract factory pattern
 	constructor() {
 		this.name = null;
 		this.rawData = null;
@@ -46,6 +46,8 @@ class CountryImplementation extends Country {
 				total_cases,
 				new_cases,
 				total_cases_per_milion,
+				new_vaccinations,
+				people_vaccinated,
 				new_cases_per_milion,
 			}) => {
 				return {
@@ -54,6 +56,8 @@ class CountryImplementation extends Country {
 					newCases: new_cases,
 					totalCasesPerMilion: total_cases_per_milion,
 					newCasesPerMilion: new_cases_per_milion,
+					newVacinations: new_vaccinations,
+					peopleVaccinated: people_vaccinated,
 					dateString: date,
 				};
 			}

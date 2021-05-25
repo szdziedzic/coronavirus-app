@@ -9,6 +9,14 @@ class Plot {
 			x: [],
 			y: [],
 		};
+		this.newVacinationsData = {
+			x: [],
+			y: [],
+		};
+		this.peopleVaccinatedData = {
+			x: [],
+			y: [],
+		}
 		this.countryName = null;
 	}
 
@@ -26,21 +34,33 @@ class Plot {
 		this.newCasesData.x = [];
 		this.newCasesData.y = [];
 		this.totalCasesData.y = [];
+		this.newVacinationsData.x = [];
+		this.newVacinationsData.y = [];
+		this.peopleVaccinatedData.x = [];
+		this.peopleVaccinatedData.y = [];
 		if (!startDate || !endDate) {
-			this.rawData.forEach(({ dateString, newCases, totalCases }) => {
+			this.rawData.forEach(({ dateString, newCases, totalCases, newVacinations, peopleVaccinated }) => {
 				this.totalCasesData.x.push(dateString);
 				this.newCasesData.x.push(dateString);
+				this.newVacinationsData.x.push(dateString);
 				this.newCasesData.y.push(newCases);
 				this.totalCasesData.y.push(totalCases);
+				this.newVacinationsData.y.push(newVacinations);
+				this.peopleVaccinatedData.x.push(dateString);
+				this.peopleVaccinatedData.y.push(peopleVaccinated);
 			});
 		}
-		this.rawData.forEach(({ dateString, newCases, totalCases }) => {
+		this.rawData.forEach(({ dateString, newCases, totalCases, newVacinations, peopleVaccinated }) => {
 			const date = new Date(dateString);
 			if (date >= startDate && date <= endDate) {
 				this.totalCasesData.x.push(dateString);
 				this.newCasesData.x.push(dateString);
+				this.newVacinationsData.x.push(dateString);
 				this.newCasesData.y.push(newCases);
 				this.totalCasesData.y.push(totalCases);
+				this.newVacinationsData.y.push(newVacinations);
+				this.peopleVaccinatedData.x.push(dateString);
+				this.peopleVaccinatedData.y.push(peopleVaccinated);
 			}
 		});
 	}

@@ -14,6 +14,8 @@ const CountryDataDisplay = ({ country, plot }) => {
 		{ title: 'Date', field: 'dateString' },
 		{ title: 'Total Cases', field: 'totalCases' },
 		{ title: 'New Cases', field: 'newCases' },
+		{ title: 'New Vacinations', field: 'newVacinations' },
+		{ title: 'People vaccinated', field: 'peopleVaccinated' },
 	];
 
 	const renderPlots = () => {
@@ -44,6 +46,28 @@ const CountryDataDisplay = ({ country, plot }) => {
 						},
 					]}
 					layout={{ width: '100%', title: 'Total Cases' }}
+				/>
+				<Plot
+					data={[
+						{
+							x: plot.newVacinationsData.x,
+							y: plot.newVacinationsData.y,
+							type: 'histogram',
+							marker: { color: 'blue' },
+						},
+					]}
+					layout={{ width: '100%', title: 'New Vacinations' }}
+				/>
+				<Plot
+					data={[
+						{
+							x: plot.peopleVaccinatedData.x,
+							y: plot.peopleVaccinatedData.y,
+							type: 'histogram',
+							marker: { color: 'blue' },
+						},
+					]}
+					layout={{ width: '100%', title: 'People vaccinated' }}
 				/>
 			</div>
 		);
