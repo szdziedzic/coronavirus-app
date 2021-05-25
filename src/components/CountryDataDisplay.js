@@ -14,6 +14,10 @@ const CountryDataDisplay = ({ country, plot }) => {
 		{ title: 'Date', field: 'dateString' },
 		{ title: 'Total Cases', field: 'totalCases' },
 		{ title: 'New Cases', field: 'newCases' },
+		{ title: 'New Deaths', field: 'newDeaths' },
+		{ title: 'Total Deaths', field: 'totalDeaths' },
+		{ title: 'New tests', field: 'newTests' },
+		{ title: 'Total tests', field: 'totalTests' },
 		{ title: 'New Vacinations', field: 'newVacinations' },
 		{ title: 'People vaccinated', field: 'peopleVaccinated' },
 	];
@@ -46,6 +50,50 @@ const CountryDataDisplay = ({ country, plot }) => {
 						},
 					]}
 					layout={{ width: '100%', title: 'Total Cases' }}
+				/>
+				<Plot
+					data={[
+						{
+							x: plot.newDeathsData.x,
+							y: plot.newDeathsData.y,
+							type: 'histogram',
+							marker: { color: 'blue' },
+						},
+					]}
+					layout={{ width: '100%', title: 'New Deaths' }}
+				/>
+				<Plot
+					data={[
+						{
+							x: plot.totalDeathsData.x,
+							y: plot.totalDeathsData.y,
+							type: 'histogram',
+							marker: { color: 'blue' },
+						},
+					]}
+					layout={{ width: '100%', title: 'Total Deaths' }}
+				/>
+				<Plot
+					data={[
+						{
+							x: plot.newTestsData.x,
+							y: plot.newTestsData.y,
+							type: 'histogram',
+							marker: { color: 'blue' },
+						},
+					]}
+					layout={{ width: '100%', title: 'New tests' }}
+				/>
+				<Plot
+					data={[
+						{
+							x: plot.totalTestsData.x,
+							y: plot.totalTestsData.y,
+							type: 'histogram',
+							marker: { color: 'blue' },
+						},
+					]}
+					layout={{ width: '100%', title: 'Total tests' }}
 				/>
 				<Plot
 					data={[
