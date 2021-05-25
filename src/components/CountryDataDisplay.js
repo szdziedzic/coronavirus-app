@@ -48,37 +48,110 @@ const CountryDataDisplay = ({ country, plot }) => {
 			</div>
 		);
 	};
+
 	const renderContinent = () => {
 		if (
-			![
-				'Asia',
-				'Europe',
-				'Africa',
-				'Oceania',
-				'South America',
-				'North America',
-			].includes(country.name)
+			!(country.continent === undefined)
 		) {
 			return (
 				<div>
 					<h6 style={{ padding: 5 }}>{'Continent: ' + country.continent}</h6>
+				</div>
+			);
+		}
+	};
+
+	const renderPopulation = () => {
+		if (
+			!(isNaN(country.population))
+		) {
+			return (
+				<h6 style={{ padding: 5 }}> {'Population: ' + Math.floor(country.population)}</h6>
+			);
+		}
+	};
+
+	const renderPopulationDensity = () => {
+		if (
+			!(isNaN(country.population_density))
+		) {
+			return (
+				<div>
 					<h6 style={{ padding: 5 }}>
-						{'Population density: ' +
-							Math.floor(country.population_density) +
-							'/km^2'}
+	 					{'Population density: ' + Math.floor(country.population_density) + '/km^2'}
 					</h6>
-					<h6 style={{ padding: 5 }}>
-						{'Median age: ' + Math.floor(country.median_age)}
-					</h6>
-					<h6 style={{ padding: 5 }}>
-						{'Life expectancy: ' + Math.floor(country.life_expectancy)}
-					</h6>
-					<h6 style={{ padding: 5 }}>
-						{'GDP per capita: $' + Math.floor(country.gdp_per_capita)}
-					</h6>
-					<h6 style={{ padding: 5 }}>
-						{'HDI: ' + country.human_development_index}
-					</h6>
+				</div>
+			);
+		}
+	};
+
+	const renderMedian = () => {
+		if (
+			!(isNaN(country.median_age))
+		) {
+			return (
+				<div>
+						<h6 style={{ padding: 5 }}>{'Median age: ' + Math.floor(country.median_age)}</h6>
+				</div>
+			);
+		}
+	};
+
+	const renderAged65 = () => {
+		if (
+			!(isNaN(country.aged65))
+		) {
+			return (
+				<div>
+						<h6 style={{ padding: 5 }}>{'People aged 65+: ' + Math.floor(country.aged65) + '%'}</h6>
+				</div>
+			);
+		}
+	};
+
+	const renderAged70 = () => {
+		if (
+			!(isNaN(country.aged70))
+		) {
+			return (
+				<div>
+						<h6 style={{ padding: 5 }}>{'People aged 70+: ' + Math.floor(country.aged70) + '%'}</h6>
+				</div>
+			);
+		}
+	};
+
+	const renderLifeExpectancy = () => {
+		if (
+			!(isNaN(country.life_expectancy))
+		) {
+			return (
+				<div>
+						<h6 style={{ padding: 5 }}>{'Life expectancy: ' + country.life_expectancy}</h6>
+				</div>
+			);
+		}
+	};
+
+	const renderGDP = () => {
+		if (
+			!(isNaN(country.gdp_per_capita))
+		) {
+			return (
+				<div>
+						<h6 style={{ padding: 5 }}>{'GDP per capita: $' + Math.floor(country.gdp_per_capita)}</h6>
+				</div>
+			);
+		}
+	};
+
+	const renderHDI = () => {
+		if (
+			!(isNaN(country.human_development_index))
+		) {
+			return (
+				<div>
+						<h6 style={{ padding: 5 }}>{'HDI: ' + country.human_development_index}</h6>
 				</div>
 			);
 		}
@@ -87,10 +160,15 @@ const CountryDataDisplay = ({ country, plot }) => {
 	return (
 		<div>
 			<h1 style={{ textAlign: 'center', padding: 20 }}>{country.name}</h1>
-			<h6 style={{ padding: 5 }}>
-				{'Population: ' + Math.floor(country.population)}
-			</h6>
 			{renderContinent()}
+			{renderPopulation()}
+			{renderPopulationDensity()}
+			{renderMedian()}
+			{renderAged65()}
+			{renderAged70()}
+			{renderLifeExpectancy()}
+			{renderGDP()}
+			{renderHDI()}
 
 			<div style={{ padding: 20 }}>
 				<h6>Start date: </h6>

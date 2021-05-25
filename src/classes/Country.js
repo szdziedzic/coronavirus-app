@@ -8,6 +8,8 @@ class Country {
 		this.population_density = null;
 		this.median_age = null;
 		this.life_expectancy = null;
+		this.aged65 = null;
+		this.aged70 = null;
 		this.gdp_per_capita = null;
 		this.human_development_index = null;
 	}
@@ -32,10 +34,11 @@ class CountryImplementation extends Country {
 		this.population = Math.floor(this.rawData.population);
 		this.population_density = Math.floor(this.rawData.population_density);
 		this.median_age = Math.floor(this.rawData.median_age);
+		this.aged65 = this.rawData.aged_65_older;
+		this.aged70 = this.rawData.aged_70_older;
 		this.gdp_per_capita = Math.floor(this.rawData.gdp_per_capita);
 		this.life_expectancy = Math.floor(this.rawData.life_expectancy);
 		this.human_development_index = this.rawData.human_development_index;
-		// Can add more country stats fields avaliable in db
 
 		this.data = this.rawData.data.map(
 			({
