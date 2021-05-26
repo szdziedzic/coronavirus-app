@@ -8,6 +8,7 @@ const databaseSingleton = new DatabaseSingleton();
 const database = databaseSingleton.getInstance(URL);
 
 test('Database fetch data', async () => {
+	expect(database.connectionURL).toBe(URL);
 	const countryArray = await database.fetchData();
 	expect(database.data).not.toBe(null);
 	expect(countryArray.length).not.toBe(0);

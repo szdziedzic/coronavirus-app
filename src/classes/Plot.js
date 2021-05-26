@@ -12,19 +12,19 @@ class Plot {
 		this.newTestsData = {
 			x: [],
 			y: [],
-		}
+		};
 		this.totalTestsData = {
 			x: [],
 			y: [],
-		}
+		};
 		this.newDeathsData = {
 			x: [],
 			y: [],
-		}
+		};
 		this.totalDeathsData = {
 			x: [],
 			y: [],
-		}
+		};
 		this.newVacinationsData = {
 			x: [],
 			y: [],
@@ -32,7 +32,7 @@ class Plot {
 		this.peopleVaccinatedData = {
 			x: [],
 			y: [],
-		}
+		};
 		this.countryName = null;
 	}
 
@@ -62,58 +62,73 @@ class Plot {
 		this.totalDeathsData.y = [];
 		this.totalTestsData.x = [];
 		this.totalTestsData.y = [];
-		
-		if (!startDate || !endDate) {
-			this.rawData.forEach(({ dateString, newCases, totalCases, newVacinations, peopleVaccinated, newTests, newDeaths, totalDeaths, totalTests }) => {
-				this.totalCasesData.x.push(dateString);
-				this.newCasesData.x.push(dateString);
-				this.newVacinationsData.x.push(dateString);
-				this.newTestsData.x.push(dateString);
-				this.newCasesData.y.push(newCases);
-				this.totalCasesData.y.push(totalCases);
-				this.newTestsData.y.push(newTests);
-				this.newVacinationsData.y.push(newVacinations);
-				this.peopleVaccinatedData.x.push(dateString);
-				this.peopleVaccinatedData.y.push(peopleVaccinated);
-				this.newDeathsData.x.push(dateString);
-				this.newDeathsData.y.push(newDeaths);
-				this.totalDeathsData.x.push(dateString);
-				this.totalDeathsData.y.push(totalDeaths);
-				this.totalTestsData.x.push(dateString);
-				this.totalTestsData.y.push(totalTests);
-			});
-		}
-		this.rawData.forEach(({ dateString, newCases, totalCases, newVacinations, peopleVaccinated, newTests, newDeaths, totalDeaths, totalTests }) => {
-			const date = new Date(dateString);
-			if (date >= startDate && date <= endDate) {
-				this.totalCasesData.x.push(dateString);
-				this.newCasesData.x.push(dateString);
-				this.newVacinationsData.x.push(dateString);
-				this.newTestsData.x.push(dateString);
-				this.newCasesData.y.push(newCases);
-				this.newTestsData.y.push(newTests);
-				this.totalCasesData.y.push(totalCases);
-				this.newVacinationsData.y.push(newVacinations);
-				this.peopleVaccinatedData.x.push(dateString);
-				this.peopleVaccinatedData.y.push(peopleVaccinated);
-				this.newDeathsData.x.push(dateString);
-				this.newDeathsData.y.push(newDeaths);
-				this.totalDeathsData.x.push(dateString);
-				this.totalDeathsData.y.push(totalDeaths);
-				this.totalTestsData.x.push(dateString);
-				this.totalTestsData.y.push(totalTests);
-			}
-		});
-	}
 
-	getDataInGivenTimePeriod(startDate, endDate) {
-		return this.data.filter((item) => {
-			if (item.date >= startDate && item.date <= endDate) {
-				return true;
-			} else {
-				return false;
-			}
-		});
+		if (!startDate || !endDate) {
+			this.rawData.forEach(
+				({
+					dateString,
+					newCases,
+					totalCases,
+					newVacinations,
+					peopleVaccinated,
+					newTests,
+					newDeaths,
+					totalDeaths,
+					totalTests,
+				}) => {
+					this.totalCasesData.x.push(dateString);
+					this.newCasesData.x.push(dateString);
+					this.newVacinationsData.x.push(dateString);
+					this.newTestsData.x.push(dateString);
+					this.newCasesData.y.push(newCases);
+					this.totalCasesData.y.push(totalCases);
+					this.newTestsData.y.push(newTests);
+					this.newVacinationsData.y.push(newVacinations);
+					this.peopleVaccinatedData.x.push(dateString);
+					this.peopleVaccinatedData.y.push(peopleVaccinated);
+					this.newDeathsData.x.push(dateString);
+					this.newDeathsData.y.push(newDeaths);
+					this.totalDeathsData.x.push(dateString);
+					this.totalDeathsData.y.push(totalDeaths);
+					this.totalTestsData.x.push(dateString);
+					this.totalTestsData.y.push(totalTests);
+				}
+			);
+		} else {
+			this.rawData.forEach(
+				({
+					dateString,
+					newCases,
+					totalCases,
+					newVacinations,
+					peopleVaccinated,
+					newTests,
+					newDeaths,
+					totalDeaths,
+					totalTests,
+				}) => {
+					const date = new Date(dateString);
+					if (date >= startDate && date <= endDate) {
+						this.totalCasesData.x.push(dateString);
+						this.newCasesData.x.push(dateString);
+						this.newVacinationsData.x.push(dateString);
+						this.newTestsData.x.push(dateString);
+						this.newCasesData.y.push(newCases);
+						this.newTestsData.y.push(newTests);
+						this.totalCasesData.y.push(totalCases);
+						this.newVacinationsData.y.push(newVacinations);
+						this.peopleVaccinatedData.x.push(dateString);
+						this.peopleVaccinatedData.y.push(peopleVaccinated);
+						this.newDeathsData.x.push(dateString);
+						this.newDeathsData.y.push(newDeaths);
+						this.totalDeathsData.x.push(dateString);
+						this.totalDeathsData.y.push(totalDeaths);
+						this.totalTestsData.x.push(dateString);
+						this.totalTestsData.y.push(totalTests);
+					}
+				}
+			);
+		}
 	}
 }
 
