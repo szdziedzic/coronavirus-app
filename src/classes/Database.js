@@ -14,7 +14,7 @@ class Database {
 
 	async fetchData() {
 		try {
-			const response = await axios.get(this.connectionURL, { timeout: 10000 });
+			const response = await axios.get(this.connectionURL, { timeout: 20000 });
 			this.data = response.data;
 			return this.getCountriesArray();
 		} catch (err) {
