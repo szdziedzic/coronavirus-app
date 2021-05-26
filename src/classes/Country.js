@@ -1,4 +1,5 @@
-class Country { //interface implemented for Abstract factory pattern
+export class Country {
+	//interface implemented for Abstract factory pattern
 	constructor() {
 		this.name = null;
 		this.rawData = null;
@@ -12,7 +13,6 @@ class Country { //interface implemented for Abstract factory pattern
 		this.aged70 = null;
 		this.gdp_per_capita = null;
 		this.human_development_index = null;
-
 	}
 
 	setName(name) {
@@ -53,8 +53,7 @@ class CountryImplementation extends Country {
 				new_tests,
 				new_deaths,
 				total_deaths,
-				total_tests
-				
+				total_tests,
 			}) => {
 				return {
 					date: new Date(date),
