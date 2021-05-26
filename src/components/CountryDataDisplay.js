@@ -22,13 +22,9 @@ const CountryDataDisplay = ({ country, plot }) => {
 		{ title: 'People vaccinated', field: 'peopleVaccinated' },
 	];
 
-	const renderPlots = () => {
-		if (!plot) {
-			return;
-		}
-		plot.formatData(startDate, endDate);
-		return (
-			<div>
+	const renderNewCasesPlot = () => {
+		if (plot.newCasesData.y.find((element) => element !== undefined)) {
+			return (
 				<Plot
 					data={[
 						{
@@ -40,6 +36,13 @@ const CountryDataDisplay = ({ country, plot }) => {
 					]}
 					layout={{ width: '100%', title: 'New Cases' }}
 				/>
+			);
+		}
+	};
+
+	const renderTotalCasesPlot = () => {
+		if (plot.totalCasesData.y.find((element) => element !== undefined)) {
+			return (
 				<Plot
 					data={[
 						{
@@ -51,6 +54,13 @@ const CountryDataDisplay = ({ country, plot }) => {
 					]}
 					layout={{ width: '100%', title: 'Total Cases' }}
 				/>
+			);
+		}
+	};
+
+	const renderNewDeathsPlot = () => {
+		if (plot.newDeathsData.y.find((element) => element !== undefined)) {
+			return (
 				<Plot
 					data={[
 						{
@@ -62,6 +72,13 @@ const CountryDataDisplay = ({ country, plot }) => {
 					]}
 					layout={{ width: '100%', title: 'New Deaths' }}
 				/>
+			);
+		}
+	};
+
+	const renderTotalDeathsPlot = () => {
+		if (plot.totalDeathsData.y.find((element) => element !== undefined)) {
+			return (
 				<Plot
 					data={[
 						{
@@ -73,6 +90,13 @@ const CountryDataDisplay = ({ country, plot }) => {
 					]}
 					layout={{ width: '100%', title: 'Total Deaths' }}
 				/>
+			);
+		}
+	};
+
+	const renderNewTestsPlot = () => {
+		if (plot.newTestsData.y.find((element) => element !== undefined)) {
+			return (
 				<Plot
 					data={[
 						{
@@ -84,6 +108,13 @@ const CountryDataDisplay = ({ country, plot }) => {
 					]}
 					layout={{ width: '100%', title: 'New tests' }}
 				/>
+			);
+		}
+	};
+
+	const renderTotalTestsPlot = () => {
+		if (plot.totalTestsData.y.find((element) => element !== undefined)) {
+			return (
 				<Plot
 					data={[
 						{
@@ -95,6 +126,13 @@ const CountryDataDisplay = ({ country, plot }) => {
 					]}
 					layout={{ width: '100%', title: 'Total tests' }}
 				/>
+			);
+		}
+	};
+
+	const renderNewVaccinationsPlot = () => {
+		if (plot.newVacinationsData.y.find((element) => element !== undefined)) {
+			return (
 				<Plot
 					data={[
 						{
@@ -106,6 +144,13 @@ const CountryDataDisplay = ({ country, plot }) => {
 					]}
 					layout={{ width: '100%', title: 'New Vacinations' }}
 				/>
+			);
+		}
+	};
+
+	const renderPeopleVaccinatedPlot = () => {
+		if (plot.peopleVaccinatedData.y.find((element) => element !== undefined)) {
+			return (
 				<Plot
 					data={[
 						{
@@ -117,6 +162,25 @@ const CountryDataDisplay = ({ country, plot }) => {
 					]}
 					layout={{ width: '100%', title: 'People vaccinated' }}
 				/>
+			);
+		}
+	};
+
+	const renderPlots = () => {
+		if (!plot) {
+			return;
+		}
+		plot.formatData(startDate, endDate);
+		return (
+			<div>
+				{renderNewCasesPlot()}
+				{renderNewDeathsPlot()}
+				{renderNewTestsPlot()}
+				{renderNewVaccinationsPlot()}
+				{renderPeopleVaccinatedPlot()}
+				{renderTotalCasesPlot()}
+				{renderTotalDeathsPlot()}
+				{renderTotalTestsPlot()}
 			</div>
 		);
 	};
