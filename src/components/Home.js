@@ -3,8 +3,14 @@ import { Link } from 'react-router-dom';
 
 const Home = ({ countriesData }) => {
 	const content = () => {
-		if (!countriesData) {
+		if (countriesData == null) {
 			return <div>Loading...</div>;
+		} else if (countriesData === false) {
+			return (
+				<div>
+					Can not connect to the database! Check your Internet connection!
+				</div>
+			);
 		} else {
 			return (
 				<div style={{ textAlign: 'center' }}>
