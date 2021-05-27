@@ -174,13 +174,13 @@ const CountryDataDisplay = ({ country, plot }) => {
 		return (
 			<div>
 				{renderNewCasesPlot()}
+				{renderTotalCasesPlot()}
 				{renderNewDeathsPlot()}
+				{renderTotalDeathsPlot()}
 				{renderNewTestsPlot()}
+				{renderTotalTestsPlot()}
 				{renderNewVaccinationsPlot()}
 				{renderPeopleVaccinatedPlot()}
-				{renderTotalCasesPlot()}
-				{renderTotalDeathsPlot()}
-				{renderTotalTestsPlot()}
 			</div>
 		);
 	};
