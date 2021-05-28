@@ -1,6 +1,6 @@
 ## Coronavirus Data App
 
-App which enables users to browse, filter and display data and stats about coronavirus in interactive form. Project built for Software Engineering course at Jagiellonian University Spring 2021.
+App which enables users to browse, filter and display data and stats about coronavirus in interactive form. Project built for Software Engineering course at Jagiellonian University, spring semester 2021.
 
 #### Authors
 
