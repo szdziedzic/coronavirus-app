@@ -1,6 +1,6 @@
 ## Coronavirus Data App
 
-App which enables users to browse, filter and display data and stats about coronavirus in interactive form. Project built for Software Engineering course at Jagiellonian University Spring 2021.
+App which enables users to browse, filter and display data and stats about coronavirus in interactive form. Project built for Software Engineering course at Jagiellonian University, spring semester 2021.
 
 #### Authors
 
@@ -13,7 +13,7 @@ You need to install node.js first: https://nodejs.org/en/
 
 #### Resources
 
-Dataset that we are using in the app: https://github.com/owid/covid-19-data/tree/master/public/data
+Dataset which we are using in the app: https://github.com/owid/covid-19-data/tree/master/public/data
 
 #### How to run the app?
 

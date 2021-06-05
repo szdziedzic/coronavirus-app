@@ -8,7 +8,7 @@ const Home = ({ countriesData }) => {
 		} else if (countriesData === false) {
 			return (
 				<div>
-					Can not connect to the database! Check your Internet connection!
+					Cannot connect to the database! Check your Internet connection!
 				</div>
 			);
 		} else {

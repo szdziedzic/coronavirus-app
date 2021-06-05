@@ -13,7 +13,7 @@ const App = () => {
 	const database = databaseSingleton.getInstance(URL);
 
 	useEffect(() => {
-		document.title = "Coronavirus app"
+		document.title = "Coronavirus App"
 		if (!countriesData) {
 			database.fetchData().then((data) => {
 				setCountriesData(data);
