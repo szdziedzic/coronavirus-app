@@ -21,6 +21,7 @@ const Home = ({ countriesData }) => {
 									to={'/countries/' + country.name}
 									className="list-group-item list-group-item-action"
 									key={country.name}
+									id={country.name}
 								>
 									{country.name}
 								</Link>
