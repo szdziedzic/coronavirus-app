@@ -310,13 +310,24 @@ const CountryDataDisplay = ({ country, plot }) => {
 				<DatePicker
 					value={startDate}
 					onChange={(value) => {
-						setStartDate(value);
+						let d = value;
+						const offset = d.getTimezoneOffset();
+						d = new Date(d.getTime() - offset * 60000);
+						setStartDate(d);
 					}}
 				/>
 			</div>
 			<div style={{ padding: 20 }}>
 				<h6>End date: </h6>
-				<DatePicker value={endDate} onChange={(value) => setEndDate(value)} />
+				<DatePicker
+					value={endDate}
+					onChange={(value) => {
+						let d = value;
+						const offset = d.getTimezoneOffset();
+						d = new Date(d.getTime() - offset * 60000);
+						setEndDate(d);
+					}}
+				/>
 			</div>
 			<div style={{ padding: 20 }}>
 				<MaterialTable
